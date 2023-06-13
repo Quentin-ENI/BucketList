@@ -1,0 +1,31 @@
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+h1 {
+    background-color: darkblue;
+    color: white;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+li {
+    list-style: none;
+}
+
+.centered {
+    text-align: center;
+}
+
+.top-left-header {
+    display: flex;
+    align-items: center;
+}
+
+.application-title {
+    margin-left: 20px;
+}

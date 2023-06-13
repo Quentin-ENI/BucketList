@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="icon" href="{{ asset('images/favicon.png') }}">
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+        {% block stylesheets %}
+        {% endblock %}
+
+        {% block javascripts %}
+        {% endblock %}
+    </head>
+    <body>
+        <header>
+            <div class="top-left-header">
+                <img src="{{ asset('images/logo.png') }}" alt="Logo de mon application">
+                <h2 class="application-title">Bucket list</h2>
+            </div>
+            <div>
+                <nav>
+                    <ul>
+                        <li><a href="{{ path('app_main') }}">Home</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <main>
+            {% block body %}{% endblock %}
+        </main>
+        <footer>
+            <hr>
+            <p class="centered">&copy;Bucket-List - {{ "now"|date("Y") }}</p>
+        </footer>
+    </body>
+</html>
