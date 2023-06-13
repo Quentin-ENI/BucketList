@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
@@ -16,17 +16,7 @@
     </head>
     <body>
         <header>
-            <div class="top-left-header">
-                <img src="{{ asset('images/logo.png') }}" alt="Logo de mon application">
-                <h2 class="application-title">Bucket list</h2>
-            </div>
-            <div>
-                <nav>
-                    <ul>
-                        <li><a href="{{ path('app_main') }}">Home</a></li>
-                    </ul>
-                </nav>
-            </div>
+            {{ include('common/navigation.html.twig') }}
         </header>
         <main>
             {% block body %}{% endblock %}

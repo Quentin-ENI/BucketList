@@ -15,6 +15,7 @@ header {
 
 li {
     list-style: none;
+    margin-right: 8px;
 }
 
 .centered {
@@ -28,4 +29,9 @@ li {
 
 .application-title {
     margin-left: 20px;
+}
+
+.menu {
+    display: flex;
+    flex-direction: row;
 }

@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello wish details!{% endblock %}
+
+{% block body %}
+
+    <div>
+        <h1>Hello wish details!</h1>
+        {% if not wish %}
+            <p>Ce souhait n'existe pas</p>
+        {% else %}
+            <p>Mon souhait est de {{ wish }}</p>
+        {% endif %}
+    </div>
+{% endblock %}
