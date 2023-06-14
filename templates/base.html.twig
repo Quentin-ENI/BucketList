@@ -9,9 +9,11 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
         {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
         {% endblock %}
 
         {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
     <body>
@@ -25,5 +27,9 @@
             <hr>
             <p class="centered">&copy;Bucket-List - {{ "now"|date("Y") }}</p>
         </footer>
+        <div class="d-flex">
+            <div>Line 1</div>
+            <div>Line 2</div>
+        </div>
     </body>
 </html>
