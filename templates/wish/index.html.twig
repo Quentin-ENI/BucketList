@@ -6,8 +6,8 @@
 
 <div>
     <h1>Hello wish list!</h1>
-    {% for key, wish in wishes %}
-        <p><a href="{{ path('wish_details', {'id': key}) }}">{{ wish }}</a></p>
+    {% for wish in wishes %}
+        <p><a href="{{ path('wish_details', {'id': wish.id}) }}">{{ wish.title }}</a></p>
     {% endfor %}
 </div>
 {% endblock %}

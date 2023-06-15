@@ -7,9 +7,16 @@
     <div>
         <h1>Hello wish details!</h1>
         {% if not wish %}
-            <p>Ce souhait n'existe pas</p>
+            <p>Ce souhait n'existe pas.</p>
         {% else %}
-            <p>Mon souhait est de {{ wish }}</p>
+            <p>Mon souhait est de {{ wish.title }}.</p>
+            {% if wish.description %}
+                <p>Description: {{ wish.description }}.</p>
+            {% endif %}
+            <p>L'auteur de mon souhait est {{ wish.author }}.</p>
+            {% if wish.dateCreated %}
+                <p>Le souhait a été créé le {{ wish.dateCreated|date("d/m/Y") }}.</p>
+            {% endif %}
         {% endif %}
     </div>
 {% endblock %}
