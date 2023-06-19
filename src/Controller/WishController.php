@@ -39,7 +39,10 @@ class WishController extends AbstractController
     }
 
     #[Route('/create', name: 'create')]
-    public function create(EntityManagerInterface $entityManager, Request $request): Response {
+    public function create(
+        EntityManagerInterface $entityManager,
+        Request $request
+    ): Response {
         $wish = new Wish();
         $wishForm = $this->createForm(WishType::class, $wish);
         $wishForm->handleRequest($request);

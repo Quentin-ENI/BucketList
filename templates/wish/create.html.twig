@@ -12,7 +12,23 @@
         <h1>Hello wish create!</h1>
         <br>
         {{ form_start(wishForm) }}
-        {{ form_widget(wishForm) }}
+
+        {{ form_label(wishForm.title) }}
+        {{ form_widget(wishForm.title) }}
+        {% if wishForm.title.vars.errors|length  %}
+            <div class="alert alert-warning">
+                {{ form_errors(wishForm.title) }}
+            </div>
+        {% endif %}
+
+        {{ form_label(wishForm.description) }}
+        {{ form_widget(wishForm.description) }}
+        {{ form_errors(wishForm.description) }}
+
+        {{ form_label(wishForm.author) }}
+        {{ form_widget(wishForm.author) }}
+        {{ form_errors(wishForm.author) }}
+
         <br>
         <button type="submit" class="btn btn-success">Créer un souhait</button>
         {{ form_end(wishForm) }}
