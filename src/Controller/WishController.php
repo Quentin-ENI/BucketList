@@ -52,6 +52,8 @@ class WishController extends AbstractController
                 $entityManager->persist($wish);
                 $entityManager->flush();
                 $this->addFlash('success', 'Le souhait a bien été enregistré.');
+
+                return $this->redirectToRoute('wish_details', ['id' => $wish->getId()]);
             } catch(Exception $exception) {
                 $this->addFlash('danger', 'Le souhait n\'a pas été enregistré.');
             }
