@@ -4,14 +4,15 @@
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
         <link rel="icon" href="{{ asset('images/favicon.png') }}">
-        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
-
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+        {% block css %}
+        {% endblock %}
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
@@ -20,16 +21,23 @@
         <header>
             {{ include('common/navigation.html.twig') }}
         </header>
-        <main>
+        <main class="container">
             {% block body %}{% endblock %}
         </main>
+
+        <br>
+
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert alert-{{ label }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+
         <footer>
             <hr>
             <p class="centered">&copy;Bucket-List - {{ "now"|date("Y") }}</p>
         </footer>
-        <div class="d-flex">
-            <div>Line 1</div>
-            <div>Line 2</div>
-        </div>
     </body>
 </html>
