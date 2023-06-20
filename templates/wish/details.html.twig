@@ -17,6 +17,7 @@
             {% if wish.dateCreated %}
                 <p>Le souhait a été créé le {{ wish.dateCreated|date("d/m/Y") }}.</p>
             {% endif %}
+            <p>La catégorie de mon souhait est {{ wish.category.name|lower }}.</p>
         {% endif %}
     </div>
 {% endblock %}

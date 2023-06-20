@@ -11,13 +11,6 @@ class WishFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-//        $wish = new Wish();
-//
-//        $wish->setTitle("Rencontrer une licorne");
-//        $wish->setAuthor("Sylvain");
-//
-//        $manager->persist($wish);
-
         foreach(WishList::$wishes as $key => $wishElement) {
             $wish = new Wish();
             $wish->setTitle($wishElement['title'] .' '. $key);
@@ -26,9 +19,19 @@ class WishFixtures extends Fixture
             $wish->setDescription("Ceci est un description");
             $wish->setIsPublished(true);
 
+            $category = $this->getReference(CategoryFixtures::getReferenceKey($wishElement['categoryId']));
+            $wish->setCategory($category);
+
             $manager->persist($wish);
         }
 
         $manager->flush();
+    }
+
+    public function getDependencies()
+    {
+        return [
+            CategoryFixtures::class
+        ];
     }
 }

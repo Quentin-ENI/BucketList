@@ -29,6 +29,10 @@
         {{ form_widget(wishForm.author) }}
         {{ form_errors(wishForm.author) }}
 
+        {{ form_label(wishForm.category) }}
+        {{ form_widget(wishForm.category) }}
+        {{ form_errors(wishForm.category) }}
+
         <br>
         <button type="submit" class="btn btn-success">Créer un souhait</button>
         {{ form_end(wishForm) }}
