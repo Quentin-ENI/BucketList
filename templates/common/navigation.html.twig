@@ -5,8 +5,18 @@
 <div>
     <nav>
         <ul class="d-flex flex-row">
+            {% if app.user %}
+                <li>Bonjour {{ app.user.username }}!</li>
+            {% endif %}
             <li><a href="{{ path('app_main') }}">Home</a></li>
             <li><a href="{{ path('wish_list') }}">Liste des souhaits</a></li>
+            {% if app.user %}
+                <li><a href="{{ path('wish_create') }}">Créer un souhait</a></li>
+                <li><a href="{{ path('app_logout') }}">Déconnexion</a></li>
+            {% else %}
+                <li><a href="{{ path('app_register') }}">S'inscrire</a></li>
+                <li><a href="{{ path('app_login') }}">Se connecter</a></li>
+            {% endif %}
         </ul>
     </nav>
 </div>

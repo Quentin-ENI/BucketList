@@ -11,6 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[Route('/wish', name: 'wish_')]
 class WishController extends AbstractController
@@ -39,11 +40,16 @@ class WishController extends AbstractController
     }
 
     #[Route('/create', name: 'create')]
+    #[IsGranted("ROLE_USER", statusCode: 404, message: "Page non trouvée")]
     public function create(
         EntityManagerInterface $entityManager,
         Request $request
     ): Response {
+        $username = $this->getUser()->getUsername();
+
         $wish = new Wish();
+        $wish->setAuthor($username);
+
         $wishForm = $this->createForm(WishType::class, $wish);
         $wishForm->handleRequest($request);
 
