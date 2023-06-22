@@ -9,15 +9,15 @@
         {% if not wish %}
             <p>Ce souhait n'existe pas.</p>
         {% else %}
-            <p>Mon souhait est de {{ wish.title }}.</p>
+            <p>Mon souhait est de {{ wish.title }}</p>
             {% if wish.description %}
-                <p>Description: {{ wish.description }}.</p>
+                <p>Description: {{ wish.description }}</p>
             {% endif %}
-            <p>L'auteur de mon souhait est {{ wish.author }}.</p>
+            <p>L'auteur de mon souhait est {{ wish.author }}</p>
             {% if wish.dateCreated %}
-                <p>Le souhait a été créé le {{ wish.dateCreated|date("d/m/Y") }}.</p>
+                <p>Le souhait a été créé le {{ wish.dateCreated|date("d/m/Y") }}</p>
             {% endif %}
-            <p>La catégorie de mon souhait est {{ wish.category.name|lower }}.</p>
+            <p>La catégorie de mon souhait est {{ wish.category.name|lower }}</p>
         {% endif %}
     </div>
 {% endblock %}

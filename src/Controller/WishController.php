@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Wish;
 use App\Form\WishType;
 use App\Repository\WishRepository;
+use App\Util\CensuratorService;
 use Doctrine\ORM\EntityManagerInterface;
 use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -43,7 +44,8 @@ class WishController extends AbstractController
     #[IsGranted("ROLE_USER", statusCode: 404, message: "Page non trouvée")]
     public function create(
         EntityManagerInterface $entityManager,
-        Request $request
+        Request $request,
+        CensuratorService $censuratorService
     ): Response {
         $username = $this->getUser()->getUsername();
 
@@ -56,6 +58,12 @@ class WishController extends AbstractController
         if ($wishForm->isSubmitted() && $wishForm->isValid()) {
             $wish->setIsPublished(true);
             $wish->setDateCreated(new \DateTime());
+            $wish->setTitle(
+                $censuratorService->purify($wish->getTitle())
+            );
+            $wish->setDescription(
+                $censuratorService->purify($wish->getDescription())
+            );
 
             try {
                 $entityManager->persist($wish);
